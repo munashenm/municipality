@@ -13,7 +13,7 @@ import JobApply from './pages/citizen/JobApply';
 import JobTrack from './pages/citizen/JobTrack';
 import QueueBooking from './pages/citizen/QueueBooking';
 import Notices from './pages/citizen/Notices';
-import Emergency from './pages/citizen/Emergency';
+import BusinessDirectory from './pages/citizen/BusinessDirectory';
 
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
@@ -30,7 +30,7 @@ import AdminNotices from './pages/admin/AdminNotices';
 import AdminResidents from './pages/admin/AdminResidents';
 import AdminDisputes from './pages/admin/AdminDisputes';
 import AdminReportsHub from './pages/admin/AdminReportsHub';
-import AdminAudit from './pages/admin/AdminAudit';
+import AdminBusinessDirectory from './pages/admin/AdminBusinessDirectory';
 
 function StaffRoute({ children }) {
   return <ProtectedRoute roles={['staff', 'admin']}>{children}</ProtectedRoute>;
@@ -56,6 +56,7 @@ export default function App() {
           <Route path="/jobs/:id" element={<JobApply />} />
           <Route path="/queue" element={<QueueBooking />} />
           <Route path="/notices" element={<Notices />} />
+          <Route path="/businesses" element={<BusinessDirectory />} />
           <Route path="/emergency" element={<Emergency />} />
 
           <Route path="/admin" element={<StaffRoute><AdminDashboard /></StaffRoute>} />
@@ -70,6 +71,7 @@ export default function App() {
           <Route path="/admin/jobs" element={<StaffRoute><AdminJobs /></StaffRoute>} />
           <Route path="/admin/queue" element={<StaffRoute><AdminQueue /></StaffRoute>} />
           <Route path="/admin/notices" element={<StaffRoute><AdminNotices /></StaffRoute>} />
+          <Route path="/admin/businesses" element={<StaffRoute><AdminBusinessDirectory /></StaffRoute>} />
         </Routes>
         <Footer />
       </div>

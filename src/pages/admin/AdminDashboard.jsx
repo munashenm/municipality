@@ -4,6 +4,7 @@ import { getReports } from '../../services/reports';
 import { getActiveAlerts } from '../../services/alerts';
 import { getBookings } from '../../services/queue';
 import { getOpenJobs } from '../../services/jobs';
+import { getPublishedBusinesses } from '../../services/businessDirectory';
 
 export default function AdminDashboard() {
   useApp();
@@ -25,6 +26,7 @@ export default function AdminDashboard() {
     { to: '/admin/jobs', label: 'Jobs & Tenders', count: getOpenJobs().length, color: 'var(--primary-dark)' },
     { to: '/admin/queue', label: 'Queue Bookings', count: bookings, color: 'var(--primary)' },
     { to: '/admin/notices', label: 'Community Notices', count: null, color: '#7c3aed' },
+    { to: '/admin/businesses', label: 'Business Directory', count: getPublishedBusinesses().length, color: '#0d9488' },
   ];
 
   return (

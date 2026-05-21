@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import {
   AlertTriangle, Droplets, Zap, CreditCard, Megaphone, PhoneCall,
-  Briefcase, Calendar, BellRing,
+  Briefcase, Calendar, BellRing, Store,
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { getActiveAlerts } from '../../services/alerts';
@@ -19,6 +19,7 @@ export default function Home() {
     { icon: Briefcase, color: 'var(--primary-dark)', title: 'Jobs & Tenders', desc: 'Vacancies, tenders, RFQs & quotations', to: '/jobs' },
     { icon: Calendar, color: 'var(--primary)', title: 'Queue Booking', desc: 'Book appointments — skip the queue', to: '/queue' },
     { icon: Megaphone, color: '#7c3aed', title: 'Community Notices', desc: 'Events, road closures & public participation', to: '/notices' },
+    { icon: Store, color: '#0d9488', title: 'Business Directory', desc: 'Find local shops, services & trades', to: '/businesses' },
     { icon: PhoneCall, color: 'var(--text-muted)', title: 'Emergency Services', desc: 'SAPS, ambulance, fire & disaster management', to: '/emergency' },
     { icon: Droplets, color: 'var(--primary-light)', title: 'Track Ticket', desc: 'Check status of your service report', to: '/track' },
   ];

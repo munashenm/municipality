@@ -1,7 +1,7 @@
 import { getStore, setStore } from './storage';
 import { createDefaultDepartments } from './queue';
 
-const PRESENTATION_VERSION = 3;
+const PRESENTATION_VERSION = 4;
 const THABO_ID = 'USR-DEMO-001';
 const SARAH_ID = 'USR-DEMO-002';
 const THABO_ACCOUNT = 'MUN-2024-78432';
@@ -186,6 +186,7 @@ export function seedData() {
   setStore('proofRequests', []);
   setStore('paymentRecords', []);
   setStore('auditLogs', []);
+  setStore('businesses', []);
   setStore('pendingOtps', {});
 
   setStore('_seeded', true);
@@ -635,6 +636,19 @@ export function seedPresentationData() {
     });
   });
   setStore('queueDepartments', departments);
+
+  setStore('businesses', [
+    { id: 'BIZ-001', name: 'Mokoena Hardware & Build', category: 'Trades & Construction', description: 'Hardware, plumbing supplies and building materials. Delivery available in SmartCity.', address: '45 Industrial Rd', ward: 'Ward 3', phone: '011 234 5678', email: 'info@mokoenahardware.co.za', website: 'www.mokoenahardware.co.za', hours: 'Mon–Sat 07:00–18:00', verified: true, status: 'Published', createdAt: days(60) },
+    { id: 'BIZ-002', name: 'SmartCity Bakery', category: 'Food & Restaurants', description: 'Fresh bread, vetkoek and kota. A local favourite since 2010.', address: '3 Market Square', ward: 'Ward 2', phone: '011 345 6789', email: '', website: '', hours: 'Daily 05:00–16:00', verified: true, status: 'Published', createdAt: days(90) },
+    { id: 'BIZ-003', name: 'Khumalo Legal Consultants', category: 'Professional Services', description: 'Conveyancing, family law and municipal compliance advice.', address: 'Suite 4, Municipal Centre', ward: 'Ward 1', phone: '011 456 7890', email: 'contact@khumalolegal.co.za', website: 'www.khumalolegal.co.za', hours: 'Mon–Fri 08:30–17:00', verified: true, status: 'Published', createdAt: days(45) },
+    { id: 'BIZ-004', name: 'Green Valley Guest House', category: 'Tourism & Hospitality', description: 'Affordable B&B accommodation. Conference room for 20 guests.', address: '18 Oak Avenue', ward: 'Ward 5', phone: '011 567 8901', email: 'stay@greenvalleygh.co.za', website: 'www.greenvalleygh.co.za', hours: 'Reception 24/7', verified: true, status: 'Published', createdAt: days(120) },
+    { id: 'BIZ-005', name: 'AutoFix SmartCity', category: 'Automotive', description: 'Vehicle servicing, tyres and roadworthy certificates.', address: '22 Workshop Lane', ward: 'Ward 4', phone: '011 678 9012', email: 'bookings@autofixsc.co.za', website: '', hours: 'Mon–Fri 08:00–17:30, Sat 08:00–13:00', verified: true, status: 'Published', createdAt: days(30) },
+    { id: 'BIZ-006', name: 'Wellness Family Clinic', category: 'Health & Wellness', description: 'GP consultations, vaccinations and chronic care. Medical aid accepted.', address: '7 Church Street', ward: 'Ward 2', phone: '011 789 0123', email: 'admin@wellnessclinic.co.za', website: '', hours: 'Mon–Sat 08:00–19:00', verified: true, status: 'Published', createdAt: days(75) },
+    { id: 'BIZ-007', name: 'SmartCity Superette', category: 'Retail & Shopping', description: 'Groceries, airtime and household essentials. SNAP accepted.', address: '14 Nelson Mandela Drive', ward: 'Ward 3', phone: '011 890 1234', email: '', website: '', hours: 'Daily 07:00–21:00', verified: true, status: 'Published', createdAt: days(200) },
+    { id: 'BIZ-008', name: 'Nkosi Electrical Services', category: 'Trades & Construction', description: 'COC certificates, wiring, solar installations and emergency call-outs.', address: 'Mobile service', ward: 'All wards', phone: '082 555 9876', email: 'nkosi.electrical@gmail.com', website: '', hours: 'Mon–Sat 07:00–20:00', verified: true, status: 'Published', createdAt: days(15) },
+    { id: 'BIZ-009', name: 'The Corner Café', category: 'Food & Restaurants', description: 'Coffee, light meals and free Wi-Fi for remote workers.', address: '1 Main Rd', ward: 'Ward 1', phone: '011 901 2345', email: '', website: 'instagram.com/cornercafesc', hours: 'Mon–Sun 07:00–20:00', verified: false, status: 'Published', createdAt: days(10) },
+    { id: 'BIZ-010', name: 'AgriSupplies Co-op', category: 'Agriculture', description: 'Feed, seed and farming equipment for smallholders in the district.', address: 'R42, SmartCity Rural', ward: 'Ward 8', phone: '011 012 3456', email: 'orders@agrisupplies.co.za', website: 'www.agrisupplies.co.za', hours: 'Mon–Fri 07:30–16:30', verified: true, status: 'Published', createdAt: days(180) },
+  ]);
 
   setStore('_presentationVersion', PRESENTATION_VERSION);
 }

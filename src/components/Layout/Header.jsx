@@ -33,6 +33,7 @@ export default function Header() {
                 {unread > 0 && <span className="nav-badge">{unread}</span>}
               </Link>
               <Link to="/jobs">Jobs</Link>
+              <Link to="/businesses">Businesses</Link>
               <Link to="/queue">Book</Link>
               <Link to="/emergency">Emergency</Link>
             </>

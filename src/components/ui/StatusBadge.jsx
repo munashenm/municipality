@@ -14,6 +14,7 @@ const STATUS_MAP = {
   Pending: 'badge-yellow',
   Approved: 'badge-green',
   Received: 'badge-blue',
+  Published: 'badge-green',
 };
 
 export default function StatusBadge({ status }) {
