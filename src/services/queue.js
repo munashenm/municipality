@@ -1,5 +1,43 @@
 import { getStore, setStore, generateId } from './storage';
 
+export const QUEUE_DEPARTMENTS = [
+  { id: 'DEPT-LIC', name: 'Licensing', description: "Driver's licence, vehicle registration & permits" },
+  { id: 'DEPT-BILL', name: 'Billing', description: 'Account queries, payments & statements' },
+  { id: 'DEPT-HOUS', name: 'Housing', description: 'Housing applications, allocations & subsidies' },
+  { id: 'DEPT-PLAN', name: 'Town Planning', description: 'Building plans, rezoning & land use' },
+  { id: 'DEPT-CARE', name: 'Customer Care', description: 'General enquiries & service requests' },
+];
+
+export function generateSlots() {
+  const slots = [];
+  const today = new Date();
+  let idx = 0;
+  for (let d = 1; d <= 7; d++) {
+    const date = new Date(today);
+    date.setDate(date.getDate() + d);
+    if (date.getDay() === 0 || date.getDay() === 6) continue;
+    ['09:00', '10:00', '11:00', '13:00', '14:00', '15:00'].forEach((time) => {
+      slots.push({
+        id: `SLOT-${date.toISOString().slice(0, 10)}-${time.replace(':', '')}`,
+        date: date.toISOString().slice(0, 10),
+        time,
+        available: idx % 3 !== 0,
+      });
+      idx += 1;
+    });
+  }
+  return slots;
+}
+
+export function createDefaultDepartments() {
+  return QUEUE_DEPARTMENTS.map(({ id, name, description }) => ({
+    id,
+    name,
+    description,
+    slots: generateSlots(),
+  }));
+}
+
 export function getDepartments() {
   return getStore('queueDepartments', []);
 }

@@ -1,6 +1,7 @@
 import { getStore, setStore } from './storage';
+import { createDefaultDepartments } from './queue';
 
-const PRESENTATION_VERSION = 1;
+const PRESENTATION_VERSION = 3;
 const THABO_ID = 'USR-DEMO-001';
 const SARAH_ID = 'USR-DEMO-002';
 const THABO_ACCOUNT = 'MUN-2024-78432';
@@ -135,13 +136,7 @@ export function seedData() {
     },
   ]);
 
-  setStore('queueDepartments', [
-    { id: 'DEPT-ID', name: 'IDs & Documentation', icon: 'id', slots: generateSlots() },
-    { id: 'DEPT-LIC', name: 'Licensing', icon: 'license', slots: generateSlots() },
-    { id: 'DEPT-BILL', name: 'Billing Office', icon: 'billing', slots: generateSlots() },
-    { id: 'DEPT-HOUS', name: 'Housing Department', icon: 'housing', slots: generateSlots() },
-    { id: 'DEPT-BUILD', name: 'Building Plans', icon: 'building', slots: generateSlots() },
-  ]);
+  setStore('queueDepartments', createDefaultDepartments());
 
   setStore('bookings', []);
 
@@ -497,7 +492,7 @@ export function seedPresentationData() {
       id: 'BK-001',
       reference: 'Q-MCJ8THABO',
       departmentId: 'DEPT-BILL',
-      departmentName: 'Billing Office',
+      departmentName: 'Billing',
       slotId: `SLOT-${slotDate}-1000`,
       date: slotDate,
       time: '10:00',
@@ -632,7 +627,7 @@ export function seedPresentationData() {
     { id: 'AUD-010', action: 'dispute_updated', userId: 'USR-STAFF-001', details: { reference: 'DSP-MCJ8K2', status: 'Under Review' }, timestamp: days(2), ip: '196.25.10.8' },
   ]);
 
-  const departments = getStore('queueDepartments', []);
+  const departments = createDefaultDepartments();
   const bookedSlots = [`SLOT-${slotDate}-1000`, `SLOT-${slotDate}-1400`];
   departments.forEach((dept) => {
     dept.slots.forEach((slot) => {
@@ -649,25 +644,4 @@ function nextWeekday(offset) {
   d.setDate(d.getDate() + offset);
   while (d.getDay() === 0 || d.getDay() === 6) d.setDate(d.getDate() + 1);
   return d.toISOString().slice(0, 10);
-}
-
-function generateSlots() {
-  const slots = [];
-  const today = new Date();
-  let idx = 0;
-  for (let d = 1; d <= 7; d++) {
-    const date = new Date(today);
-    date.setDate(date.getDate() + d);
-    if (date.getDay() === 0 || date.getDay() === 6) continue;
-    ['09:00', '10:00', '11:00', '13:00', '14:00', '15:00'].forEach((time) => {
-      slots.push({
-        id: `SLOT-${date.toISOString().slice(0, 10)}-${time.replace(':', '')}`,
-        date: date.toISOString().slice(0, 10),
-        time,
-        available: idx % 3 !== 0,
-      });
-      idx += 1;
-    });
-  }
-  return slots;
 }

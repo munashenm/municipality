@@ -61,7 +61,7 @@ export default function QueueBooking() {
   return (
     <div className="container app-main animate-fade-in">
       <Toast message={toast?.message} type={toast?.type} onClose={clear} />
-      <PageHeader title="Smart Queue Booking" subtitle="Book appointments for IDs, licensing, billing, housing & building plans" backTo="/" />
+      <PageHeader title="Smart Queue Booking" subtitle="Book appointments for licensing, billing, housing, town planning & more" backTo="/" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
         <form className="card" onSubmit={handleBook}>
@@ -70,6 +70,9 @@ export default function QueueBooking() {
             <select className="form-control" value={selectedDept} onChange={(e) => { setSelectedDept(e.target.value); setSelectedSlot(''); }}>
               {departments.map((d) => <option key={d.id} value={d.id}>{d.name}</option>)}
             </select>
+            {dept?.description && (
+              <small style={{ color: 'var(--text-muted)', display: 'block', marginTop: '0.35rem' }}>{dept.description}</small>
+            )}
           </div>
 
           <div className="form-group">
@@ -119,8 +122,11 @@ export default function QueueBooking() {
             <ul className="dept-list">
               {departments.map((d) => (
                 <li key={d.id}>
-                  <strong>{d.name}</strong>
-                  <span>{d.slots.filter((s) => s.available).length} slots available</span>
+                  <div>
+                    <strong>{d.name}</strong>
+                    {d.description && <small style={{ display: 'block', color: 'var(--text-muted)' }}>{d.description}</small>}
+                  </div>
+                  <span>{d.slots.filter((s) => s.available).length} slots</span>
                 </li>
               ))}
             </ul>
