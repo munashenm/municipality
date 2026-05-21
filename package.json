@@ -5,11 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite --open",
-    "start": "vite --open",
+    "start": "node scripts/server.mjs",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview --open",
-    "serve": "vite build && vite preview --open"
+    "preview": "vite preview --host 0.0.0.0 --port 4173",
+    "serve": "npm run build && npm start"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "dependencies": {
     "jspdf": "^4.2.1",
@@ -18,7 +21,8 @@
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-router-dom": "^7.15.1",
-    "recharts": "^3.8.1"
+    "recharts": "^3.8.1",
+    "serve-handler": "^6.1.7"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
