@@ -14,6 +14,7 @@ import JobTrack from './pages/citizen/JobTrack';
 import QueueBooking from './pages/citizen/QueueBooking';
 import Notices from './pages/citizen/Notices';
 import BusinessDirectory from './pages/citizen/BusinessDirectory';
+import Emergency from './pages/citizen/Emergency';
 
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
@@ -31,6 +32,7 @@ import AdminResidents from './pages/admin/AdminResidents';
 import AdminDisputes from './pages/admin/AdminDisputes';
 import AdminReportsHub from './pages/admin/AdminReportsHub';
 import AdminBusinessDirectory from './pages/admin/AdminBusinessDirectory';
+import AdminAudit from './pages/admin/AdminAudit';
 
 function StaffRoute({ children }) {
   return <ProtectedRoute roles={['staff', 'admin']}>{children}</ProtectedRoute>;
