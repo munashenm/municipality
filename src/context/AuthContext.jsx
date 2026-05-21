@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useCallback, useEffect } from 'react';
-import { seedData, seedAuthData } from '../services/seed';
+import { seedData, seedAuthData, seedPresentationData } from '../services/seed';
 import { getCurrentUser, logout as authLogout } from '../services/auth';
 
 const AuthContext = createContext(null);
@@ -16,6 +16,7 @@ export function AuthProvider({ children }) {
     async function init() {
       seedData();
       await seedAuthData();
+      seedPresentationData();
       setUser(getCurrentUser());
       setReady(true);
     }

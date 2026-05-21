@@ -6,7 +6,8 @@ import { useAuth } from '../../context/AuthContext';
 import { login } from '../../services/auth';
 
 const DEMO_ACCOUNTS = [
-  { label: 'Citizen', identifier: 'thabo@demo.co.za', password: 'Demo@123' },
+  { label: 'Citizen (Thabo)', identifier: 'thabo@demo.co.za', password: 'Demo@123' },
+  { label: 'Citizen (Sarah)', identifier: 'sarah@demo.co.za', password: 'Demo@123' },
   { label: 'Staff', identifier: 'staff@municipality.gov.za', password: 'Staff@123' },
   { label: 'Admin', identifier: 'admin@municipality.gov.za', password: 'Admin@123' },
 ];
